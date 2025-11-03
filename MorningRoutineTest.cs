@@ -76,6 +76,8 @@ public class Rutina(TimeOnly horaRutina) :IMorningRoutine
 
         if (horaRutina.Hour == 7 && horaRutina.Minute < 30)
             return "Leer";
+        if (horaRutina.Hour == 7 && horaRutina.Minute > 30)
+            return "Estudiar";
         
         return horaRutina.Hour switch
         {
