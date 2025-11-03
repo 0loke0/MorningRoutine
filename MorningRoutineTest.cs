@@ -56,16 +56,13 @@ public class Rutina(TimeOnly horaRutina) :IMorningRoutine
 {
     public string WhatShouldIDoNow()
     {
-        switch (horaRutina.Hour)
+        return horaRutina.Hour switch
         {
-            case 6:
-                return "Hacer ejercicio";
-            case 7:
-                return "Leer y estudiar";
-            case 8:
-                return "Desayunar"; 
-        }
-        return "Sin actividad";
+            6 => "Hacer ejercicio",
+            7 => "Leer y estudiar",
+            8 => "Desayunar",
+            _ => "Sin actividad"
+        };
     }
 }
 
