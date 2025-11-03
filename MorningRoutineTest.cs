@@ -46,7 +46,8 @@ public class Rutina(TimeOnly horaRutina) :IMorningRoutine
     {
         
         if (horaRutina.Hour == 6 ) return "Hacer ejercicio";
-        return "Leer y estudiar";
+        if (horaRutina.Hour == 7 ) return  "Leer y estudiar";
+        return "Desayunar";
         
     }
 }
