@@ -57,8 +57,14 @@ public class MorningRoutineTest
 
 public class Rutina(TimeOnly horaRutina) :IMorningRoutine
 {
+    
+ 
     public string WhatShouldIDoNow()
     {
+
+        if (horaRutina.Hour == 7 && horaRutina.Minute < 30)
+            return "Leer";
+        
         return horaRutina.Hour switch
         {
             6 => "Hacer ejercicio",
