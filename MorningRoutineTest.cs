@@ -79,28 +79,21 @@ public class MorningRoutineTest
     
 }
 
-public class Rutina(TimeOnly horaRutina) :IMorningRoutine
+public class Rutina(TimeOnly horaRutina):IMorningRoutine
 {
-    
- 
+    private readonly List<IEstrategia> _estrategias = new()
+    {
+        new LeerEstrategia(),
+        new EstudiarEstrategia(),
+        new DucharseEstrategia(),
+        new HacerEjercicioEstrategia(),
+        new DesayunarEstrategia(),
+    };
+
     public string WhatShouldIDoNow()
     {
-
-        if (horaRutina.Hour == 7 && horaRutina.Minute < 30)
-            return "Leer";
-        if (horaRutina.Hour == 7 && horaRutina.Minute > 30)
-            return "Estudiar";
-        
-        if (horaRutina.Hour == 6 && horaRutina.Minute > 45)
-            return "Ducharse";
-        
-        return horaRutina.Hour switch
-        {
-            6 => "Hacer ejercicio",
-            7 => "Leer y estudiar",
-            8 => "Desayunar",
-            _ => "Sin actividad"
-        };
+        var estrategiaEncontrada = _estrategias.FirstOrDefault(s => s.EsHorarioActividad(horaRutina));
+        return estrategiaEncontrada?.ObtenerActividad() ?? "Sin actividad";
     }
 }
 
@@ -108,3 +101,39 @@ public interface IMorningRoutine
 {
     string WhatShouldIDoNow();
 }
+
+public interface IEstrategia
+{
+    bool EsHorarioActividad(TimeOnly time);
+    string ObtenerActividad();
+}
+
+public class HacerEjercicioEstrategia : IEstrategia
+{
+    public bool EsHorarioActividad(TimeOnly time) => time.Hour == 6 && time.Minute <= 45;
+    public string ObtenerActividad() => "Hacer ejercicio";
+}
+
+public class DucharseEstrategia : IEstrategia
+{
+    public bool EsHorarioActividad(TimeOnly time) => time.Hour == 6 && time.Minute > 45;
+    public string ObtenerActividad() => "Ducharse";
+}
+
+public class LeerEstrategia : IEstrategia
+{
+    public bool EsHorarioActividad(TimeOnly time) => time.Hour == 7 && time.Minute < 30;
+    public string ObtenerActividad() => "Leer";
+}
+
+public class EstudiarEstrategia : IEstrategia
+{
+    public bool EsHorarioActividad(TimeOnly time) => time.Hour == 7 && time.Minute > 30;
+    public string ObtenerActividad() => "Estudiar";
+}
+public class DesayunarEstrategia : IEstrategia
+{
+    public bool EsHorarioActividad(TimeOnly time) => time.Hour == 8;
+    public string ObtenerActividad() => "Desayunar";
+}
+
