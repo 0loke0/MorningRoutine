@@ -33,7 +33,10 @@ public class Rutina(TimeOnly horaRutina) :IMorningRoutine
 {
     public string WhatShouldIDoNow()
     {
-        return "Hacer ejercicio";
+        
+        if (horaRutina.Hour == 6 ) return "Hacer ejercicio";
+        return "Leer y estudiar";
+        
     }
 }
 
