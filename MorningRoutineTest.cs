@@ -20,7 +20,7 @@ public class Rutina(string horaRutina) :IMorningRoutine
 {
     public string WhatShouldIDoNow()
     {
-        throw new NotImplementedException();
+        return "Hacer ejercicio";
     }
 }
 
