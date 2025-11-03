@@ -8,7 +8,8 @@ public class MorningRoutineTest
     public void Mostrar_Hacer_ejercicio_entre_las_0600_y_las_0659()
     {
         //Arrange
-        var rutina = new Rutina("6:10");
+        var hora = new TimeOnly(6, 23, 00);
+        var rutina = new Rutina(hora);
         //Act
         
         //Assert
@@ -16,7 +17,7 @@ public class MorningRoutineTest
     }
 }
 
-public class Rutina(string horaRutina) :IMorningRoutine
+public class Rutina(TimeOnly horaRutina) :IMorningRoutine
 {
     public string WhatShouldIDoNow()
     {
