@@ -65,6 +65,18 @@ public class MorningRoutineTest
         rutina.WhatShouldIDoNow().Should().Be("Sin actividad");
     }
     
+    [Fact]
+    public void Mostrar_Ducharse_entre_las_0645_y_las_0659()
+    {
+        //Arrange
+        var hora = new TimeOnly(6, 50, 00);
+        var rutina = new Rutina(hora);
+        //Act
+        
+        //Assert
+        rutina.WhatShouldIDoNow().Should().Be("Sin actividad");
+    }
+    
 }
 
 public class Rutina(TimeOnly horaRutina) :IMorningRoutine
