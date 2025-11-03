@@ -74,7 +74,7 @@ public class MorningRoutineTest
         //Act
         
         //Assert
-        rutina.WhatShouldIDoNow().Should().Be("Sin actividad");
+        rutina.WhatShouldIDoNow().Should().Be("Ducharse");
     }
     
 }
