@@ -16,8 +16,9 @@ public class MorningRoutineTest
         rutina.WhatShouldIDoNow().Should().Be("Hacer ejercicio");
     }
 
+    
     [Fact]
-    public void Mostrar_Leer_y_estudiar_entre_las_0700_y_las_0759()
+    public void Mostrar_Leer_entre_las_0700_y_las_0729()
     {
         //Arrange
         var hora = new TimeOnly(7, 23, 00);
@@ -25,8 +26,9 @@ public class MorningRoutineTest
         //Act
         
         //Assert
-        rutina.WhatShouldIDoNow().Should().Be("Leer y estudiar");
+        rutina.WhatShouldIDoNow().Should().Be("Leer");
     }
+    
     [Fact]
     public void Mostrar_Desayunar_entre_las_0800_y_las_0859()
     {
@@ -50,6 +52,7 @@ public class MorningRoutineTest
         //Assert
         rutina.WhatShouldIDoNow().Should().Be("Sin actividad");
     }
+    
 }
 
 public class Rutina(TimeOnly horaRutina) :IMorningRoutine
