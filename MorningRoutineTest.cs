@@ -91,6 +91,9 @@ public class Rutina(TimeOnly horaRutina) :IMorningRoutine
         if (horaRutina.Hour == 7 && horaRutina.Minute > 30)
             return "Estudiar";
         
+        if (horaRutina.Hour == 6 && horaRutina.Minute > 45)
+            return "Ducharse";
+        
         return horaRutina.Hour switch
         {
             6 => "Hacer ejercicio",
