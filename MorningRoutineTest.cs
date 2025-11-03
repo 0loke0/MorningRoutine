@@ -48,7 +48,7 @@ public class MorningRoutineTest
         //Act
         
         //Assert
-        rutina.WhatShouldIDoNow().Should().Be("Desayunar");
+        rutina.WhatShouldIDoNow().Should().Be("Sin actividad");
     }
 }
 
@@ -65,7 +65,7 @@ public class Rutina(TimeOnly horaRutina) :IMorningRoutine
             case 8:
                 return "Desayunar"; 
         }
-        return "";
+        return "Sin actividad";
     }
 }
 
