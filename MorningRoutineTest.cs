@@ -44,11 +44,16 @@ public class Rutina(TimeOnly horaRutina) :IMorningRoutine
 {
     public string WhatShouldIDoNow()
     {
-        
-        if (horaRutina.Hour == 6 ) return "Hacer ejercicio";
-        if (horaRutina.Hour == 7 ) return  "Leer y estudiar";
-        return "Desayunar";
-        
+        switch (horaRutina.Hour)
+        {
+            case 6:
+                return "Hacer ejercicio";
+            case 7:
+                return "Leer y estudiar";
+            case 8:
+                return "Desayunar"; 
+        }
+        return "";
     }
 }
 
