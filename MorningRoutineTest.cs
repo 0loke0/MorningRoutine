@@ -38,6 +38,18 @@ public class MorningRoutineTest
         //Assert
         rutina.WhatShouldIDoNow().Should().Be("Desayunar");
     }
+
+    [Fact]
+    public void Mostrar_Sin_actividad_fuera_del_intervalo_de_tiempo_definido()
+    {
+        //Arrange
+        var hora = new TimeOnly(9, 23, 00);
+        var rutina = new Rutina(hora);
+        //Act
+        
+        //Assert
+        rutina.WhatShouldIDoNow().Should().Be("Desayunar");
+    }
 }
 
 public class Rutina(TimeOnly horaRutina) :IMorningRoutine
